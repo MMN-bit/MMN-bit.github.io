@@ -1,0 +1,142 @@
+
+
+  .animate__animated.animate__backInDown {
+    --animation-delay: 3s;
+
+  }
+
+  .animate__animated.animate__backInUp {
+    --animation-delay: 3s;
+
+  }
+
+body section{
+    animation: fadeIn 3s ease-in;
+}
+
+header{
+    
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(bg2.png);
+    background-attachment: fixed; /* Enables the parallax effect */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+header {
+    background-image: url('bg1.jpg'); 
+    text-align: center;
+    padding: 10px 0;
+}
+section {
+    margin: 0 auto; 
+    width: 80%;
+    text-align: justify;
+    border-radius: 5px;
+    color: rgb(208, 151, 53);
+    background-position: center;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+h1, h2 {
+    text-align: center;
+    color: rgb(208, 151, 53);
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+.act1 {
+    background-image: url('bg1.jpg'); /* Replace with your image URL */
+}
+.image-slots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.image-slots img {
+    width: 200px; /* Adjust size as needed */
+    height: 200px; /* Adjust size as needed */
+    border-radius: 80%; /* Makes the images circular */
+    margin: 0 10px;
+    border: 2px solid rgb(208, 151, 53); /* Optional: adds a border */
+}
+  
+
+.divider {
+    height: 2px; /* Height of the separator */
+    background-color: rgb(208, 151, 53); /* Color of the separator */
+    margin: 0; /* Removes default margins */
+}
+
+footer {
+    background-image: url('bg1.jpg'); /* Replace with your image URL */
+    color: rgb(208, 151, 53);
+    text-align: center;
+    padding: 5px 0;
+    position: relative; /* Makes the footer stay at the bottom */
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    color: #4caf50; /* Green hyperlink */
+    text-decoration: none; /* Removes underline */
+    font-weight: bold;
+}
+
+footer a {
+    color: #4caf50; /* Green hyperlink */
+    text-decoration: none; /* Removes underline */
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline; /* Adds underline when hovered over */
+}
+
+.glitch-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.glitch-text {
+    position: relative;
+    animation: glitch 1.8s ease-in-out forwards 1;
+}
+
+/* Glitch Animation */
+@keyframes glitch {
+    0% {
+        text-shadow: 2px 2px rgb(145, 20, 20), -2px -2px rgb(208, 85, 3);
+    }
+    25% {
+        text-shadow: -2px -2px rgb(145, 20, 20), 2px 2px rgb(208, 85, 3);
+    }
+    50% {
+        text-shadow: 4px 4px rgb(145, 20, 20), -4px -4px rgb(208, 85, 3);
+        transform: translate(2px, -2px);
+    }
+    75% {
+        text-shadow: -4px -4px rgb(145, 20, 20), 4px 4px rgb(208, 85, 3);
+        transform: translate(-2px, 2px);
+    }
+    100% {
+        text-shadow: 0px 0px transparent;
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
