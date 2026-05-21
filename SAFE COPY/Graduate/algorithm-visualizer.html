@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="description" content="Rubik Algorithm Visualizer">
+		<meta name="keywords" content="Rubik cube algorithm visualizer">
+
+		<link rel="stylesheet" type="text/css" href="styles/base.css">
+		<link rel="icon" type="image/png" href="media/cuber-favicon-0064x0064.png">
+		<link rel="apple-touch-icon" href="media/cuber-favicon-0144x0144.png">
+
+		<title>Algorithm Visualizer</title>
+
+		<script charset="utf-8" src="scripts/vendor/three.min.js"></script>
+		<script charset="utf-8" src="scripts/vendor/CSS3DRenderer.js"></script>
+		<script charset="utf-8" src="scripts/vendor/SVGRenderer.js"></script>
+		<script charset="utf-8" src="scripts/vendor/tween.min.js"></script>
+		<script charset="utf-8" src="scripts/vendor/TrackballControls.js"></script>
+		<script charset="utf-8" src="scripts/vendor/jquery.js"></script>
+		<script charset="utf-8" src="scripts/vendor/skip.js"></script>
+		<script charset="utf-8" src="scripts/colors.js"></script>
+		<script charset="utf-8" src="scripts/directions.js"></script>
+		<script charset="utf-8" src="scripts/queues.js"></script>
+		<script charset="utf-8" src="scripts/twists.js"></script>
+		<script charset="utf-8" src="scripts/cubelets.js"></script>
+		<script charset="utf-8" src="scripts/groups.js"></script>
+		<script charset="utf-8" src="scripts/slices.js"></script>
+		<script charset="utf-8" src="scripts/folds.js"></script>
+		<script charset="utf-8" src="scripts/cubes.js"></script>
+		<script charset="utf-8" src="scripts/solvers.js"></script>
+		<script charset="utf-8" src="scripts/solvers/striegel.js"></script>
+		<script charset="utf-8" src="scripts/algorithms.js"></script>
+		<script charset="utf-8" src="scripts/erno.js"></script>
+	</head>
+	<body class="graydient">
+		<div id="sidePanel" class="open" aria-hidden="false">
+			<div id="sidePanelInner">
+				<h2 class="panelSectionTitle">Algorithm Visualizer</h2>
+				<div class="panelRow">
+					<select id="algorithmSelect" class="panelInput" aria-label="Algorithm library"></select>
+				</div>
+				<div class="panelRow">
+					<button id="runAlgorithmButton" type="button">Visualize</button>
+				</div>
+				<h2 id="solve" class="panelSectionTitle">Help & Language</h2>
+				<div class="panelRow">
+					<button id="hintsButton" type="button" aria-label="Hints">
+						<img src="media/faq.png" alt="Hints" />
+					<button onclick="window.location.href = 'algorithm-visualizer-bg.html';" id="hintsButton" type="button" aria-label="BG">
+						<img src="media/bulgaria.png" alt="BG" />
+					</button>
+				</div>
+				<div class="panelRow">
+					<button onclick="window.location.href = 'index.html';" type="button">Back To Main Page</button>
+				</div>
+				<div id="captions"></div>
+			</div>
+		</div>
+
+		<div id="hintsModal" aria-hidden="true">
+			<div id="hintsModalCard" role="dialog" aria-modal="true" aria-labelledby="hintsTitle">
+				<button id="closeHintsButton" type="button" aria-label="Close hints">x</button>
+				<h2 id="hintsTitle">Algorithm Visualizer</h2>
+				<ul>
+					<li>Select any algorithm from the full library dropdown.</li>
+					<li>Press 'Visualize' to see the algorithm in action.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="algorithmNotationOverlay" aria-live="polite">
+			<div id="algorithmNotationLabel">Algorithm notations</div>
+			<div id="algorithmNotationValue">Select an algorithm to see its notation.</div>
+		</div>
+		<div id="container"></div>
+	</body>
+</html>

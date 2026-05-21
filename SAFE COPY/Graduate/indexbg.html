@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="description" content="Rubik’s Cube">
+		<meta name="keywords" content="Erno Rubik’s Cube">
+		
+		<link rel="stylesheet" type="text/css" href="styles/base.css">
+		<link rel="icon" type="image/png" href="media/cuber-favicon-0064x0064.png">
+		<link rel="apple-touch-icon" href="media/cuber-favicon-0144x0144.png">
+		
+		<title>Cuber</title>
+		
+
+		<!--  Third-party frameworks and scaffolds.  -->
+
+		<script charset="utf-8" src="scripts/vendor/three.min.js"></script>
+		<script charset="utf-8" src="scripts/vendor/CSS3DRenderer.js"></script>
+		<script charset="utf-8" src="scripts/vendor/SVGRenderer.js"></script>
+		<script charset="utf-8" src="scripts/vendor/tween.min.js"></script>
+		<script charset="utf-8" src="scripts/vendor/TrackballControls.js"></script>
+		<script charset="utf-8" src="scripts/vendor/jquery.js"></script>
+		<script charset="utf-8" src="scripts/vendor/skip.js"></script>		
+		
+
+		<!--  Here are the Cube guts. Enjoy.  -->
+
+		<script charset="utf-8" src="scripts/colors.js"></script>
+		<script charset="utf-8" src="scripts/directions.js"></script>
+		<script charset="utf-8" src="scripts/queues.js"></script>
+		<script charset="utf-8" src="scripts/twists.js"></script>
+		<script charset="utf-8" src="scripts/cubelets.js"></script>
+		<script charset="utf-8" src="scripts/groups.js"></script>
+		<script charset="utf-8" src="scripts/slices.js"></script>
+		<script charset="utf-8" src="scripts/folds.js"></script>
+		<script charset="utf-8" src="scripts/cubes.js"></script>		
+		<script charset="utf-8" src="scripts/solvers.js"></script>
+		<script charset="utf-8" src="scripts/solvers/stewart.js"></script>
+		<script charset="utf-8" src="scripts/solvers/striegel.js"></script>
+		<script charset="utf-8" src="scripts/solvers/beginner.js"></script>
+		<script charset="utf-8" src="scripts/algorithms.js"></script>		
+		<script charset="utf-8" src="scripts/erno.js"></script>		
+	
+
+	</head>
+	<body class="graydient">
+
+		
+		<button id="panelToggle" type="button" aria-label="Open menu">&#9776;</button>
+
+	
+		<div id="sidePanel" aria-hidden="true">
+			<div id="sidePanelInner">
+				<h2 class="panelSectionTitle">Алгоритми</h2>
+				<div class="panelRow">
+				<button 	onclick="window.location.href = 'algorithm-visualizer-bg.html';" id="algorithmTutorialsButton" type="button">Трениране на алгоритми</button>
+				</div>
+				<h2 class="panelSectionTitle">Разбъркване</h2>
+				
+				<div class="panelRow">
+					<button id="shuffleButton" type="button">Започни разбъркване</button>
+					<button id="stopShuffleButton" type="button">Спри разбъркването</button>
+				</div>
+
+				<h2 class="panelSectionTitle">Разбъркване</h2>
+				<div class="panelRow">
+					<input id="scrambleInput" type="text" placeholder="Въведете разбъркване" />
+					<button id="executeScrambleButton" type="button">Изпълни</button>
+				</div>
+
+				<h2 class="panelSectionTitle">Скорост на завъртане</h2>
+				<div id="twistDurationControlBG">
+					<input id="twistDurationSliderBG" type="range" min="0" max="2" step="1" value="1" />
+					<span id="twistDurationValueBG">Нормално</span>
+				</div>
+
+				<h2 id="solve" class="panelSectionTitle">Методи за решаване</h2>
+				<div class="panelRow">
+					<button id="Beginner" type="button">Начинаещ</button>
+					<button id="CFOP" type="button">CFOP</button>
+					<button id="Roux" type="button">Roux</button>
+				</div>
+				<h2 id="solve" class="panelSectionTitle">Помощ и език</h2>
+				<div class="panelRow">
+					<button id="hintsButton" type="button" aria-label="Подсказки">
+						<img src="media/faq.png" alt="Подсказки" />
+						
+					</button>
+                    <button  onclick="window.location.href = 'index.html';" id="hintsButton" type="button" aria-label="EN">
+						<img src="media/united-kingdom.png" alt="" />
+						
+					</button>
+				</div>
+
+				<div id="captions"></div>
+			</div>
+		</div>
+
+		
+		<div id="hintsModal" aria-hidden="true">
+			<div id="hintsModalCard" role="dialog" aria-modal="true" aria-labelledby="hintsTitle">
+				<button id="closeHintsButton" type="button" aria-label="Close hints">x</button>
+				<h2 id="hintsTitle">Спомагателна инфромация</h2>
+				<ul>
+					<li>Инструкции за изпълнение на движения: Движенията при решаването на кубчето на рубик се определят с букви, представляващи страната,
+						която се манипулира (напрмер F за предната страна, R за дясната и т.н.). Само буква означава завъртане по часовниковата стрелка. Ако има апостроф след буквата (например F'), това означава, че страната трябва да се завърти обратно на часовниковата стрелка.
+						Ако има цифра 2 след буквата (например F2), това означава, че страната трябва да се завърти два пъти.
+					</li>
+					<li>Използвайте бутона 'Започни разбъркване', за да стартирате анимация на разбъркване.</li>
+					<li>Натиснете 'Спри разбъркването', за да спрете анимацията преди да приложите метод за решаване.</li>
+					<li>Можете да поставите персонализирано разбъркване в полето за въвеждане и да натиснете 'Изпълни'.</li>
+					<li>'Начинаещ' е най-лесния метод за следване; 'CFOP' и 'Roux' са по-сложни методи.</li>
+					<li>Завъртете кубчето с натискане на левият клавиш на мишката, за да инспектирате всички страни.</li>
+					<li>Мърдайте кубчето в пространстовотo с натискане на десният клавиш на мишката.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="timer">0.00s</div>
+		<div id="container"></div>
+
+	</body>
+</html>
